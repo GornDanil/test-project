@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DTO\RegistrationData;
 use App\Services\User\Abstracts\UserServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -15,6 +16,13 @@ class UserController extends Controller
     }
 
     public function index() {
+        $data = [
+            'email' => 'v.veret@sdnsa.ru',
+            'name' => 'vitas',
+            'phone' => '6372',
+            'password' => 'jfdks',
+        ];
+        dd(RegistrationData::create($data));
         return view('welcome', [
             'users' => $this->service->getUsers(),
         ]);
