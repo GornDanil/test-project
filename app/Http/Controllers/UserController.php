@@ -16,13 +16,7 @@ class UserController extends Controller
     }
 
     public function index() {
-        $data = [
-            'email' => 'v.veret@sdnsa.ru',
-            'name' => 'vitas',
-            'phone' => '6372',
-            'password' => 'jfdks',
-        ];
-        dd(RegistrationData::create($data));
+
         return view('welcome', [
             'users' => $this->service->getUsers(),
         ]);
