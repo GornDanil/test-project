@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\DTO\RegistrationData;
 use App\Services\User\Abstracts\UserServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
