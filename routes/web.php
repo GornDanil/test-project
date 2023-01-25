@@ -13,4 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\UserController::class, 'index']);
+//Route::get('/', [\App\Http\Controllers\UserController::class, 'index']);
+
+Route::view('/', 'home')->name('home');
+Route::view('/registration', 'registration')->name('registration');
+Route::view('/login', 'login')->name('login');
+Route::view('/new-paste', 'new-paste')->name('new-paste');
+
