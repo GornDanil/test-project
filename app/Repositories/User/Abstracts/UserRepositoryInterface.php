@@ -11,5 +11,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface UserRepositoryInterface extends RepositoryInterface
 {
-    //
+    public function checkUser(object $data);
+
+    public function getUserByName(string $name);
 }

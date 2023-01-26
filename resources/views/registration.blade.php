@@ -8,11 +8,9 @@
             @csrf
             <h1>Регистрация</h1>
 
-            @if(count($errors) > 0)
+            @if(isset($error))
                 <ul class="warning-message">
-                    @foreach($errors as $error)
                         <li>{{$error}}</li>
-                    @endforeach
                 </ul>
             @endif
 

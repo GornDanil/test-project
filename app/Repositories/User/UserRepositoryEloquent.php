@@ -4,7 +4,6 @@ namespace App\Repositories\User;
 
 use App\Models\User;
 use App\Repositories\User\Abstracts\UserRepositoryInterface;
-use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
@@ -14,6 +13,8 @@ use Prettus\Repository\Eloquent\BaseRepository;
  */
 class UserRepositoryEloquent extends BaseRepository implements UserRepositoryInterface
 {
+
+
     /**
      * Specify Model class name
      *
@@ -23,5 +24,23 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepositoryInt
     {
         return User::class;
     }
+
+    /**
+     * Checking the existence of the user
+     *
+     * @return boolean
+     */
+    public function checkUser(object $data): bool{
+        $userByName = $this->model->newQuery()->where('name', '=', $data->name)->first();
+        $userByEmail = $this->model->newQuery()->where('email', '=', $data->email)->first();
+        return isset($userByName) || isset($userByEmail);
+    }
+
+    public function getUserByName(string $name){
+        return $this->model->newQuery()
+            ->where('name', $name)->first();
+    }
+
+
 
 }

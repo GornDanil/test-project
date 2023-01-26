@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
 Route::view('/registration', 'registration')->name('registration');
+Route::post('/registration', [\App\Http\Controllers\UserController::class, 'registration'])->name('registration-post');
 Route::view('/login', 'login')->name('login');
+Route::post('/login', [\App\Http\Controllers\UserController::class, 'login'])->name('login-post');
+Route::get('/logout', [\App\Http\Controllers\UserController::class, 'logout'])->name('logout');
 Route::view('/new-paste', 'new-paste')->name('new-paste');
 
