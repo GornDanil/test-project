@@ -18,13 +18,19 @@ class UserController extends Controller
     }
 
     public function registration(RegistrationRequest $request) {
-        $data = RegistrationData::create($request->validated());
-        return $this->service->registration($data);
+        $error = $this->service->registration(RegistrationData::create($request->validated()));
+        if (isset($error)){
+            return view('registration', ['error' => $error]);
+        }
+        return redirect()->route('home');
     }
 
     public function login(LoginRequest $request){
-        $data = LoginData::create($request->validated());
-        return $this->service->login($data);
+        $error = $this->service->login(LoginData::create($request->validated()));
+        if (isset($error)){
+            return view('login', ['error' => $error]);
+        }
+        return redirect()->route('home');
     }
 
     public function logout(){
