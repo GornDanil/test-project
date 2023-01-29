@@ -2,6 +2,7 @@
 
 namespace App\Repositories\User;
 
+use App\DTO\RegistrationData;
 use App\Models\User;
 use App\Repositories\User\Abstracts\UserRepositoryInterface;
 use Prettus\Repository\Eloquent\BaseRepository;
@@ -13,8 +14,6 @@ use Prettus\Repository\Eloquent\BaseRepository;
  */
 class UserRepositoryEloquent extends BaseRepository implements UserRepositoryInterface
 {
-
-
     /**
      * Specify Model class name
      *
@@ -26,19 +25,24 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepositoryInt
     }
 
     /**
-     * Checking the existence of the user
-     *
-     * @return boolean
+     * @inheritDoc
      */
-    public function checkUser(object $data): bool{
-        $userByName = $this->model->newQuery()->where('name', '=', $data->name)->first();
-        $userByEmail = $this->model->newQuery()->where('email', '=', $data->email)->first();
-        return isset($userByName) || isset($userByEmail);
+    public function checkUser(RegistrationData $data): bool
+    {
+        return $this->model->newQuery()
+                ->where('name', $data->name)
+                ->orWhere('email', $data->email)
+                ->exists();
     }
 
-    public function getUserByName(string $name){
+    /**
+     * @inheritDoc
+     */
+    public function getUserByName(string $name): ?object
+    {
         return $this->model->newQuery()
-            ->where('name', $name)->first();
+            ->where('name', $name)
+            ->first();
     }
 
 

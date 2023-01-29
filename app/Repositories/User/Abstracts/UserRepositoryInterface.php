@@ -2,6 +2,7 @@
 
 namespace App\Repositories\User\Abstracts;
 
+use App\DTO\RegistrationData;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
@@ -11,7 +12,19 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface UserRepositoryInterface extends RepositoryInterface
 {
-    public function checkUser(object $data);
+    /**
+     * Checking the existence of the user
+     *
+     * @param RegistrationData $data
+     * @return boolean
+     */
+    public function checkUser(RegistrationData $data): bool;
 
-    public function getUserByName(string $name);
+    /**
+     * Getting a user by name
+     *
+     * @param string $name
+     * @return ?object
+     */
+    public function getUserByName(string $name): ?object;
 }
