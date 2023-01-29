@@ -23,16 +23,16 @@
             <h4 class="brand-title">Paste</h4>
         </a>
 
-{{--        <div class="nav-menu">--}}
-{{--            @if(Auth::user())--}}
+        <div class="nav-menu">
+            @if(Auth::user())
 {{--                <a href="{{ route('my-pastes') }}" class="nav-link">Мои пасты</a>--}}
-{{--                <a href="{{ route('logout') }}" class="nav-link btn_white">Выйти</a>--}}
-{{--            @else--}}
-{{--                <a href="{{ route('login') }}" class="nav-link btn_border-white">Войти</a>--}}
-{{--                <a href="{{ route('registration') }}" class="nav-link btn_white">Зарегистрироваться</a>--}}
-{{--            @endif--}}
+                <a href="{{ route('logout') }}" class="nav-link btn_white">Выйти</a>
+            @else
+                <a href="{{ route('login') }}" class="nav-link btn_border-white">Войти</a>
+                <a href="{{ route('registration') }}" class="nav-link btn_white">Зарегистрироваться</a>
+            @endif
 {{--            <a href="{{ route('new-paste') }}" class="btn new_paste"><span>+</span> Новая паста</a>--}}
-{{--        </div>--}}
+        </div>
     </div>
 </header>
 

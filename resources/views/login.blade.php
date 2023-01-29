@@ -7,6 +7,13 @@
         <form method="POST" action="{{route('login-post')}}" class="form">
             @csrf
             <h1>Авторизация</h1>
+
+            @if(isset($error))
+                <ul class="warning-message">
+                    <li>{{$error}}</li>
+                </ul>
+            @endif
+
             <input type="text" name="name" id="name" placeholder="Имя пользователя">
             <input type="password" name="password" id="password" placeholder="Пароль">
 
